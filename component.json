@@ -1,0 +1,8 @@
+{
+  "name": "bootawesome",
+  "version": "0.0.1",
+  "devDependencies": {
+    "font-awesome": "~3.0.2",
+    "bootstrap": "~2.3.1"
+  }
+}
