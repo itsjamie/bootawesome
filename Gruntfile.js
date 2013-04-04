@@ -2,29 +2,30 @@ module.exports = function(grunt) {
   "use strict";
 
   var bower_dir = "components";
+  var dist_dir = "dist"
 
   grunt.initConfig({
     clean: {
-      start: ['components/', 'tmp/', 'dist/'],
+      start: ['components/', 'tmp/', dist_dir],
       finish: ['components/', 'tmp/']
     },
     copy: {
       main: {
         files: [{
           src: [bower_dir + '/bootstrap/less/*.less', '!' + bower_dir + '/bootstrap/less/sprites.less'],
-          dest: './dist/less/',
+          dest: './' + dist_dir + '/less/',
           filter: 'isFile',
           expand: true,
           flatten: true
         }, {
           src: [bower_dir + '/font-awesome/less/*.less'],
-          dest: './dist/less/',
+          dest: './' + dist_dir + '/less/',
           filter: 'isFile',
           expand: true,
           flatten: true
         }, {
-          src: [bower_dir + '/font-awesome/font/*'],
-          dest: './dist/font/',
+          src: [bower_dir + '/font-awesome/font/fontawesome-webfont.*'],
+          dest: './' + dist_dir + '/font/',
           filter: 'isFile',
           expand: true,
           flatten: true
@@ -64,7 +65,7 @@ module.exports = function(grunt) {
           report: 'gzip'
         },
         src: 'tmp/bootstrap.js',
-        dest: 'dist/js/bootstrap.js'
+        dest: dist_dir + '/js/bootstrap.js'
       }
     }
   });
@@ -74,7 +75,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   
-  grunt.registerTask('default', [
+  grunt.registerTask('install', [
     'clean:start', 
     'bower', 
     'combine', 
